@@ -1,0 +1,19 @@
+
+.icon__item {
+    background-color: var(--header-color);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+
+.icon__item li:hover {
+    color: var(--first-color);
+    cursor: pointer;
+    transition: all ease .3s;
+    
+}

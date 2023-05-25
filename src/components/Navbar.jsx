@@ -1,0 +1,34 @@
+import { useNavigate } from "react-router-dom";
+import { RiTimerLine, } from "react-icons/ri";
+import { BiNotepad } from "react-icons/bi";
+
+import "../components/navbar.css"
+
+
+
+const Navbar = () => {
+    const navigate = useNavigate()
+
+    const NavPomo = () => {
+        navigate('/pomodoro')
+    }
+    const NavTodo = () => {
+        navigate('todo')
+    }
+
+    return (
+        <div className="header__item">
+            <ul className="icon__item">
+                <li onClick={NavTodo}>
+                    <BiNotepad size={25} />
+                </li>
+                <li onClick={NavPomo}>
+                    <RiTimerLine size={25} />
+                </li>
+            </ul>
+
+        </div>
+    )
+}
+
+export default Navbar
