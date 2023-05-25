@@ -1,0 +1,27 @@
+.footer__item__infos {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    bottom: 0px;
+    background-color: var(--header-color);
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__item__infos p {
+    color: var(--font-color);
+}
+
+.icon__social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--first-color);
+}
+
+.icon__social a{
+    color: var(--first-color);
+}

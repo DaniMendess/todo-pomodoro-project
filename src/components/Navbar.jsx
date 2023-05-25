@@ -5,7 +5,6 @@ import { BiNotepad } from "react-icons/bi";
 import "../components/navbar.css"
 
 
-
 const Navbar = () => {
     const navigate = useNavigate()
 
@@ -17,17 +16,20 @@ const Navbar = () => {
     }
 
     return (
-        <div className="header__item">
-            <ul className="icon__item">
-                <li onClick={NavTodo}>
-                    <BiNotepad size={25} />
-                </li>
-                <li onClick={NavPomo}>
-                    <RiTimerLine size={25} />
-                </li>
-            </ul>
+        <>
+            <header className="header__item">
+                <nav className="icon__item">
+                    <a onClick={NavTodo}>
+                        <BiNotepad size={25} />
+                    </a>
+                    <a onClick={NavPomo}>
+                        <RiTimerLine size={25} />
+                    </a>
+                </nav>
+            </header>
 
-        </div>
+        </>
+
     )
 }
 
