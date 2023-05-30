@@ -37,8 +37,6 @@
     height: 40px;
 }
 
-
-
 .task__item:focus {
     outline: 1px solid #353434;
 }
@@ -55,6 +53,7 @@
     cursor: pointer;
     color:  rgb(196, 196, 204);
     transition: all .3s ease;
+    cursor: no-drop;
 }
 
 .btn__add__task:hover {
@@ -160,14 +159,22 @@
 
 
 .my__tasks {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.option__items {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.my__itens__task {
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
@@ -175,19 +182,12 @@
     padding: 20px;
     border: 1px solid #373636;
 }
-
-.option__items {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    cursor: pointer;
-}
-
-.option__items li {
+ 
+.option__items span {
     color: #ffffff;
 }
 
-.option__items li:hover {
+.option__items span:hover {
     color: #afacac;
 }
 

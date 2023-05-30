@@ -13,7 +13,7 @@
 
   /* FONT WEIGHT*/
   --weight-500: 500;
-  
+
 
   /* FONT SIZE */
   --placeholder-size: 16px;
@@ -39,4 +39,14 @@ p {
   font-size: 11px;
   color: rgb(196, 196, 204);
   font-weight: var(--weight-500);
+}
+
+
+ul {
+  color: rgb(196, 196, 204);
+  font-weight: var(--weight-500);
+}
+
+ul .task__name {
+  font-size: 11px;
 }

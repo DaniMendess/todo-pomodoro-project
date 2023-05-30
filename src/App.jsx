@@ -5,6 +5,7 @@ import './App.css'
 
 
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -15,6 +16,8 @@ function App() {
         <Route index path='todo' element={<Todo/>} />
         <Route path='pomodoro' element={<Pomodoro/>} />
       </Routes>
+
+      <Footer/>
     </BrowserRouter>
 
   )

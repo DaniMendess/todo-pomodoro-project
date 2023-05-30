@@ -1,8 +1,7 @@
 .footer__item__infos {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
-    bottom: 0px;
     background-color: var(--header-color);
     width: 100%;
     padding: 20px;
