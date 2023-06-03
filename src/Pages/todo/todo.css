@@ -1,15 +1,9 @@
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
 .all__items {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 768px;
+    min-height: 100vh;
+
 }
 
 .add__task {
@@ -19,13 +13,12 @@
     margin-top: 25px;
     gap: 25px;
     padding: 20px;
-    width: 500px;
 }
 
 
 
 .task__item {
-    width: 400px;
+    width: 630px;
     background-color: var(--input-color);
     border: none;
     padding: 17px 30px;
@@ -34,7 +27,7 @@
     font-size: 10px;
     font-weight: 500;
     outline: none;
-    height: 40px;
+    height: 50px;
 }
 
 .task__item:focus {
@@ -49,9 +42,9 @@
     justify-content: center;
     border-radius: 10px;
     padding: 13px 25px;
-    height: 40px;
+    height: 50px;
     cursor: pointer;
-    color:  rgb(196, 196, 204);
+    color: rgb(196, 196, 204);
     transition: all .3s ease;
     cursor: no-drop;
 }
@@ -71,9 +64,9 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 10px;  
-    margin-top: 30px;
-    margin-bottom: 5rem;
+    gap: 10px;
+    margin-top: 70px;
+    margin-bottom: 10px;
 }
 
 .hide {
@@ -82,11 +75,11 @@
 
 .nav__search {
     display: flex;
-    justify-content: flex-start;
+    width: 768px;
 }
 
 .search__list {
-    width: 500px;
+    width: 740px;
     padding: 0 20px;
 }
 
@@ -105,7 +98,7 @@
     font-size: 10px;
     font-weight: 500;
     outline: none;
-    height: 40px;
+    height: 50px;
 }
 
 .search__item:focus {
@@ -124,10 +117,10 @@
     justify-content: center;
     border-radius: 10px;
     padding: 13px 20px;
-    height: 40px;
+    height: 50px;
     cursor: pointer;
-    color:  rgb(196, 196, 204);
-    transition: all .3s ease;   
+    color: rgb(0, 0, 0);
+    transition: all .3s ease;
 }
 
 .btn__search__task:hover {
@@ -144,12 +137,12 @@
     font-size: 10px;
     font-weight: 500;
     outline: none;
-    height: 40px;
+    height: 50px;
     padding: 10px;
     appearance: none;
     cursor: pointer;
     appearance: none;
-   
+
 }
 
 .select__item__search:hover {
@@ -168,21 +161,34 @@
     flex-direction: column;
     gap: 15px;
 }
+
 .option__items {
     display: flex;
     gap: 10px;
     cursor: pointer;
 }
 
-.my__itens__task {
+.task-container {
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
     background-color: var(--task-color);
     padding: 20px;
     border: 1px solid #373636;
+    transition: all 0.3s ease;
 }
- 
+
+.task-container.completed{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color: var(--first-color);
+    padding: 20px;
+    border: 1px solid #373636;
+    color: rgb(133, 131, 131);
+}
+
+
 .option__items span {
     color: #ffffff;
 }
@@ -191,12 +197,12 @@
     color: #afacac;
 }
 
-.modal-wraper.open{
+.modal-wraper.open {
     opacity: 1;
     visibility: visible;
 }
 
-.card{
+.card {
     padding: 3rem 3rem 3rem;
     background: var(--body-color);
     max-width: 25.2rem;
@@ -205,7 +211,7 @@
 }
 
 /* criação do modal, alinhamento ao centro*/
-.modal-wraper{
+.modal-wraper {
     opacity: 0;
     visibility: hidden;
     position: fixed;
@@ -219,7 +225,7 @@
     background: rgba(0, 0, 0, 0.7);
 }
 
-.modal{
+.modal {
     position: relative;
 }
 
@@ -260,7 +266,7 @@
 
 
 
-.btn__edit{
+.btn__edit {
     background-color: var(--first-color);
     border: none;
     display: flex;
@@ -270,10 +276,10 @@
     padding: 13px 20px;
     height: 40px;
     cursor: pointer;
-    color:  rgb(196, 196, 204);
-    transition: all .3s ease; 
+    color: rgb(196, 196, 204);
+    transition: all .3s ease;
 }
 
-.btn__edit:hover{
-    background-color:  #07699b;
+.btn__edit:hover {
+    background-color: #07699b;
 }

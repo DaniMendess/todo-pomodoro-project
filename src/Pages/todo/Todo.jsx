@@ -1,22 +1,18 @@
 import React, { useState, useRef } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import './todo.css'
 import { RiAddCircleLine, RiSearchLine, RiCloseFill } from "react-icons/ri";
 import { TbNotesOff } from "react-icons/tb";
 import { BsPencil, BsCheck2, BsTrash } from "react-icons/bs";
 
-
-
-
-
-
-
+import Footer from "../../components/Footer"
 
 const Todo = () => {
-
-    const random = Math.random() * 0.1
-
     const [tasks, setTask] = useState([])
 
+    const [complete, setComplete] = useState(true)
+
+    
     // [{ id: random, task: "ISSO" },{ id: random, task: "ISSO" }]
 
     const taskName = useRef()
@@ -41,7 +37,8 @@ const Todo = () => {
             return
         }
 
-        setTask([...tasks, { id: random, task: taskName.current.value }])
+        const newTask = { id: uuidv4(), text: taskName.current.value, isComplete: false } 
+        setTask([...tasks, newTask])
     }
 
     const deleteTask = (taskId) => {
@@ -49,11 +46,21 @@ const Todo = () => {
         setTask(newTask)
     }
 
-   
+    const isTaskComplete = (id) => {
+        const updatedTasks = tasks.map(task => {
+          if (task.id === id) {
+            return { ...task, isComplete: !task.isComplete };
+          }
+          return task;
+        });
+      
+        setTask(updatedTasks);
+        console.log(updatedTasks);
+      };
 
 
     return (
-        <div className="container">
+        <>
             <div className="all__items">
                 <div className="add__task">
                     <input ref={taskName} className="task__item" type="text" placeholder="Adicione as suas tarefas..." onChange={handleItem}/>
@@ -86,12 +93,13 @@ const Todo = () => {
                             <>
                                 <div className="tasks">
                                 {tasks.map((task) => (
-                                    <div className="my__itens__task" key={task.id}>
-                                        <p className="task__name">{task.task}</p>
+                                    <div className={task.isComplete ? 'task-container completed' : 'task-container'} key={task.id}
+                                    >
+                                        <p style={{fontSize: 14}}className="task__name">{task.text}</p>
                                         <div className="option__items">
                                             <span><BsPencil /></span>
-                                            <span><BsCheck2 /></span>
-                                            <span onClick={() => deleteTask(task.id)}><BsTrash /></span>
+                                            <span><BsCheck2 onClick={() => isTaskComplete(task.id)} /></span>
+                                            <span><BsTrash onClick={() => deleteTask(task.id)} /></span>
                                         </div>
                                     </div>
                                 ))
@@ -101,7 +109,7 @@ const Todo = () => {
                             
                         ) : <div className="info__item">
                             <div className="note__img">
-                                <TbNotesOff size={50} />
+                                <TbNotesOff size={90} />
                             </div>
 
                             <h3>
@@ -129,7 +137,8 @@ const Todo = () => {
                     </h2>
                 </div>
             </div>
-        </div>
+            <Footer/>
+        </>
     )
 }
 

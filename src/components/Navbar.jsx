@@ -12,7 +12,7 @@ const Navbar = () => {
         navigate('/pomodoro')
     }
     const NavTodo = () => {
-        navigate('todo')
+        navigate('/')
     }
 
     return (
@@ -20,10 +20,10 @@ const Navbar = () => {
             <header className="header__item">
                 <nav className="icon__item">
                     <a onClick={NavTodo}>
-                        <BiNotepad size={25} />
+                        <BiNotepad size={30} />
                     </a>
                     <a onClick={NavPomo}>
-                        <RiTimerLine size={25} />
+                        <RiTimerLine size={30} />
                     </a>
                 </nav>
             </header>

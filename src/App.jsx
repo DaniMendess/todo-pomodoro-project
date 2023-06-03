@@ -13,11 +13,9 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route index path='todo' element={<Todo/>} />
+        <Route index  element={<Todo/>} />
         <Route path='pomodoro' element={<Pomodoro/>} />
       </Routes>
-
-      <Footer/>
     </BrowserRouter>
 
   )

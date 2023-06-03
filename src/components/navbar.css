@@ -1,7 +1,7 @@
 
 .header__item {
     background-color: var(--header-color);
-    height: 70px;
+    height: 100px;
     width: 100%;
     display: flex;
     align-items: center;
