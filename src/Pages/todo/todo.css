@@ -198,11 +198,13 @@
 }
 
 .modal-wraper.open {
+    z-index: 10;
     opacity: 1;
     visibility: visible;
 }
 
 .card {
+    z-index: 10;
     padding: 3rem 3rem 3rem;
     background: var(--body-color);
     max-width: 25.2rem;
@@ -222,7 +224,7 @@
     bottom: 0;
     display: grid;
     place-content: center;
-    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
 }
 
 .modal {
