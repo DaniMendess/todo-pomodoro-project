@@ -44,7 +44,7 @@
     padding: 13px 25px;
     height: 50px;
     cursor: pointer;
-    color: rgb(196, 196, 204);
+   
     transition: all .3s ease;
     cursor: no-drop;
 }
@@ -83,12 +83,6 @@
     padding: 0 20px;
 }
 
-
-.search__list__item {
-    display: flex;
-    gap: 10px;
-}
-
 .search__item {
     background-color: var(--input-color);
     border: none;
@@ -106,27 +100,8 @@
 }
 
 .search__list__item select {
-    width: 50%;
+    width: 30%;
 }
-
-.btn__search__task {
-    background-color: var(--first-color);
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    padding: 13px 20px;
-    height: 50px;
-    cursor: pointer;
-    color: rgb(0, 0, 0);
-    transition: all .3s ease;
-}
-
-.btn__search__task:hover {
-    background-color: #07699b;
-}
-
 
 .select__item__search {
     background-color: var(--input-color);
@@ -188,6 +163,11 @@
     color: rgb(133, 131, 131);
 }
 
+.hidenTask {
+    display: none;
+}
+
+
 
 .option__items span {
     color: #ffffff;
@@ -245,7 +225,6 @@
 .edit__task {
     background-color: var(--input-color);
     border: none;
-    padding: 17px 30px;
     border-radius: 10px;
     color: var(--font-color);
     font-size: 10px;

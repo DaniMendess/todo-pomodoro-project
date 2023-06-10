@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import './todo.css'
-import { RiAddCircleLine, RiSearchLine, RiCloseFill } from "react-icons/ri";
+import { RiAddCircleLine, RiCloseFill } from "react-icons/ri";
 import { TbNotesOff } from "react-icons/tb";
 import { BsPencil, BsCheck2, BsTrash } from "react-icons/bs";
 
@@ -12,6 +12,7 @@ import Footer from "../../components/Footer"
 const Todo = () => {
     const [tasks, setTasks] = useState([]);
     const [modal, setModal] = useState('modal-wraper');
+    const [filter, setFilter] = useState("todas");
     const taskName = useRef();
     const inputEditTask = useRef();
     const editTaskId = useRef(null);
@@ -31,7 +32,7 @@ const Todo = () => {
             return
         }
 
-        const newTask = { id: uuidv4(), text: taskName.current.value, isComplete: false }
+        const newTask = { id: uuidv4(), text: taskName.current.value, isComplete: false, itsDone: false}
         setTasks([...tasks, newTask])
     }
 
@@ -51,7 +52,7 @@ const Todo = () => {
         setTasks(updatedTasks);
     };
 
-    const editMyTask = (id) => {
+    const theModal = (id) => {
         if (modal === 'modal-wraper') {
             setModal('modal-wraper open')
         } else {
@@ -63,7 +64,7 @@ const Todo = () => {
     const editTask = () => {
         const id = editTaskId.current;
         const nameTask = inputEditTask.current.value;
-        
+
         const updatedTasks = tasks.map(task => {
             if (task.id === id) {
                 return { ...task, text: nameTask };
@@ -76,6 +77,21 @@ const Todo = () => {
         editTaskId.current = null;
     }
 
+    const changeTask = (event) => {
+        setFilter(event.target.value);
+      };
+      
+      const filterTasks = (task) => {
+        if (filter === "todas") {
+          return true; // Mostra todas as tarefas
+        } else if (filter === "feitas") {
+          return task.isComplete; // Mostra apenas as tarefas feitas
+        } else if (filter === "a fazer") {
+          return !task.isComplete; // Mostra apenas as tarefas a fazer (não concluídas)
+        }
+      };
+    
+
 
     return (
         <>
@@ -83,7 +99,7 @@ const Todo = () => {
                 <div className="add__task">
                     <input ref={taskName} className="task__item" type="text" placeholder="Adicione as suas tarefas..." onChange={handleItem} />
                     <button className="btn__add__task" onClick={addTask}>
-                        <RiAddCircleLine size={25} />
+                        <RiAddCircleLine size={25}/>
                     </button>
                 </div>
                 <main className="is__main">
@@ -91,15 +107,11 @@ const Todo = () => {
                         <div className="nav__search">
                             <div className="search__list">
                                 <form className="search__list__item">
-                                    <input className="search__item" placeholder="Pesquisar" type="text" />
-                                    <button className="btn__search__task">
-                                        <RiSearchLine />
-                                    </button>
-
-                                    <select defaultValue={'DEFAULT'} className="select__item__search">
+                                    <select defaultValue={'DEFAULT'} className="select__item__search" onChange={changeTask}>
                                         <option value="DEFAULT" disabled>Filtrar</option>
+                                        <option value="todas">Todas</option>
                                         <option value="feitas">Feitas</option>
-                                        <option value="feitas">A fazer</option>
+                                        <option value="a fazer">A fazer</option>
                                     </select>
                                 </form>
                             </div>
@@ -110,16 +122,18 @@ const Todo = () => {
                         {tasks.length ? (
                             <>
                                 <div className="tasks">
-                                    {tasks.map((task) => (
-                                        <div className={task.isComplete ? 'task-container completed' : 'task-container'} key={task.id}
-                                        >
-                                            <p style={{ fontSize: 14 }} className="task__name">{task.text}</p>
-                                            <div className="option__items">
-                                                <span><BsPencil onClick={() => editMyTask(task.id)} /></span>
-                                                <span><BsCheck2 onClick={() => toggleTaskComplete(task.id)} /></span>
-                                                <span><BsTrash onClick={() => deleteTask(task.id)} /></span>
+                                    {tasks.filter(filterTasks).map((task) => (
+                                            <div className={task.isComplete ? 'task-container completed' : 'task-container'}  key={task.id}
+                                            >
+                                                <p style={{ fontSize: 14 }} className="task__name">{task.text}</p>
+                                                <div className="option__items">
+                                                    <span><BsPencil onClick={() => theModal(task.id)} /></span>
+                                                    <span><BsCheck2 onClick={() => toggleTaskComplete(task.id)} /></span>
+                                                    <span><BsTrash onClick={() => deleteTask(task.id)} /></span>
+                                                </div>
                                             </div>
-                                        </div>
+                                
+
                                     ))
                                     }
                                 </div>
@@ -142,22 +156,22 @@ const Todo = () => {
             </div>
             {tasks.map((task) => (
                 <div className={modal} key={task.id}>
-                <div className="modal card">
-                    <div className="input__edit">
-                        <input ref={inputEditTask} className="edit__task" type="text" placeholder="Digite o novo nome..." />
-                        <button className="btn__edit" onClick={() => editTask(task.id)} >
-                            <BsPencil />
-                        </button>
+                    <div className="modal card">
+                        <div className="input__edit">
+                            <input ref={inputEditTask} className="edit__task" type="text" placeholder="Digite o novo nome..." />
+                            <button className="btn__edit" onClick={() => editTask(task.id)} >
+                                <BsPencil />
+                            </button>
+                        </div>
+                        <h2>
+                            <button className="close" onClick={theModal} >
+                                <RiCloseFill />
+                            </button>
+                        </h2>
                     </div>
-                    <h2>
-                        <button className="close" onClick={editMyTask} >
-                            <RiCloseFill />
-                        </button>
-                    </h2>
                 </div>
-            </div>
             ))}
-            
+
             <Footer />
         </>
     )
