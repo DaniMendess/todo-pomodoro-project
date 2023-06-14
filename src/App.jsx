@@ -11,7 +11,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
         <Route index  element={<Todo/>} />
         <Route path='pomodoro' element={<Pomodoro/>} />

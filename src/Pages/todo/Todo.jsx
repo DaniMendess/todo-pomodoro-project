@@ -6,6 +6,7 @@ import { TbNotesOff } from "react-icons/tb";
 import { BsPencil, BsCheck2, BsTrash } from "react-icons/bs";
 
 import Footer from "../../components/Footer"
+import NavBar from "../../components/Navbar"
 
 
 
@@ -94,14 +95,16 @@ const Todo = () => {
 
 
     return (
-        <>
+        <div className="container">
+            <NavBar/>
+            
             <div className="all__items">
-                <div className="add__task">
+            <div className="add__task">
                     <input ref={taskName} className="task__item" type="text" placeholder="Adicione as suas tarefas..." onChange={handleItem} />
                     <button className="btn__add__task" onClick={addTask}>
                         <RiAddCircleLine size={25}/>
                     </button>
-                </div>
+            </div>
                 <main className="is__main">
                     {tasks.length > 0 && (
                         <div className="nav__search">
@@ -171,9 +174,10 @@ const Todo = () => {
                     </div>
                 </div>
             ))}
+           
 
             <Footer />
-        </>
+        </div>
     )
 }
 

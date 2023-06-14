@@ -1,20 +1,24 @@
 .container{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
+   
 }
 
 .display__timer {
-    margin-top: 40px;
-    margin-bottom: 10rem;
+    padding-top: 50px;
+}
+
+main {
+    flex: 1;
+    overflow-y: auto;
 }
 
 .info__time {
     margin-top: 40px;
     display: flex;
     gap: 10px;
+  
 }
 
 .input__time {

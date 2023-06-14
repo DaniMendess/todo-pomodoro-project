@@ -1,5 +1,18 @@
 html, body {
     background-color: var(--body-color);
-    position: relative;
-    height: 100%;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 770px) {
+    .task__item {
+       width: 500px;
+    }
+    
+}
+
+@media screen and (max-width: 720px) {
+    .task__container {
+
+    }
 }

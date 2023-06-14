@@ -1,7 +1,9 @@
 
 .header__item {
     background-color: var(--header-color);
-    height: 100px;
+    position: relative;
+    top: 0;
+    padding: 20px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -11,7 +13,7 @@
 .icon__item {
     display: flex;
     list-style: none;
-    margin-left: 30px;
+    
     gap: 10px;
 }
 .icon__item a {

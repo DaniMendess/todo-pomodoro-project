@@ -4,8 +4,8 @@ import Palm from "../../assets/HandPalm.svg"
 import { VscDebugStart } from "react-icons/vsc"
 import "./pomodoro.css"
 
-
-
+import NavBar from "../../components/Navbar"
+import Footer from "../../components/Footer"
 
 const Pomodoro = () => {
     const inputMyTime = useRef()
@@ -47,24 +47,30 @@ const Pomodoro = () => {
 
     return (
         <div className="container">
-            <div className="info__time">
-                {erro ? <input className="input__time__erro" type="number" placeholder="Campo vazio" ref={inputMyTime} /> : <input className="input__time" type="number" placeholder="Digite o tempo desejado" ref={inputMyTime} />}
-                <button className="btn__start" onClick={handleStart} ><VscDebugStart size={30} /></button>
-            </div>
-
-            <main className="display__timer">
-                <div className="timer">
-                    <span className="minutes" >{minutes}</span>
-                    <span className="ball">:</span>
-                    <span className="seconds">{seconds}</span>
+            <NavBar />
+            <main>
+                <div className="info__time">
+                    {erro ? <inpdivut className="input__time__erro" type="number" placeholder="Campo vazio" ref={inputMyTime} /> : <input className="input__time" type="number" placeholder="Digite o tempo desejado" ref={inputMyTime} />}
+                    <button className="btn__start" onClick={handleStart} ><VscDebugStart size={30} /></button>
                 </div>
-                <button className="controls" onClick={handleRestart} >
-                    <img src={Palm} alt="palma-de-mão" />
-                    PARAR
-                </button>
+
+                <main className="display__timer">
+                    <div className="timer">
+                        <span className="minutes" >{minutes}</span>
+                        <span className="ball">:</span>
+                        <span className="seconds">{seconds}</span>
+                    </div>
+                    <button className="controls" onClick={handleRestart} >
+                        <img src={Palm} alt="palma-de-mão" />
+                        PARAR
+                    </button>
+                </main>
             </main>
+
+
+            <Footer />
         </div>
-        
+
     )
 }
 
