@@ -11,8 +11,26 @@ html, body {
     
 }
 
-@media screen and (max-width: 720px) {
-    .task__container {
+@media screen and (max-width: 620px) {
+    .task__item {
+        width: 350px;
+     }
+}
 
-    }
+@media screen and (max-width: 450px) {
+    .task__item {
+        width: 300px;
+     }
+}
+
+@media screen and (max-width: 400px) {
+    .task__item {
+        width: 260px;
+     }
+}
+
+@media screen and (max-width: 360px) {
+    .task__item {
+        width: 240px;
+     }
 }
