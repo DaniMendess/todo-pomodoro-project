@@ -34,3 +34,9 @@ html, body {
         width: 240px;
      }
 }
+
+@media screen and (max-width: 320px) {
+    .task__item {
+        width: 150px;
+     }
+}
