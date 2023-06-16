@@ -16,8 +16,9 @@ const Footer = () => {
                         <TbBrandGithub size={20} />
                     </a>
                 </div>
-
                 <p>Desenvolvido por: Daniel Barbosa Mendes</p>
+                <h6>© 2023</h6>
+                
             </div>
         </>
     )

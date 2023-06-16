@@ -5,7 +5,7 @@
     flex-direction: column;
     background-color: var(--header-color);
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
 }
@@ -27,4 +27,8 @@
 
 .icon__social a:hover {
     color: cadetblue;
+}
+
+h6 {
+    color: rgb(104, 103, 103);
 }

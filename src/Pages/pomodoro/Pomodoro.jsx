@@ -27,11 +27,13 @@ const Pomodoro = () => {
         }
     }, [isCount])
 
+
     const handleStart = () => {
         const time = inputMyTime.current.value
-        if (time <= 0) {
+        
+        if (time <= 0 || "") {
             setErro(true)
-            minutes = 0
+            return
         }
         const minutes = parseInt(inputMyTime.current.value);
         setTimeLeft(minutes * 60);
@@ -50,7 +52,7 @@ const Pomodoro = () => {
             <NavBar />
             <main>
                 <div className="info__time">
-                    {erro ? <inpdivut className="input__time__erro" type="number" placeholder="Campo vazio" ref={inputMyTime} /> : <input className="input__time" type="number" placeholder="Digite o tempo desejado" ref={inputMyTime} />}
+                    {erro ? <input className="input__time__erro" type="number" placeholder="Campo vazio" ref={inputMyTime} /> : <input className="input__time" type="number" placeholder="Digite o tempo desejado" ref={inputMyTime} />}
                     <button className="btn__start" onClick={handleStart} ><VscDebugStart size={30} /></button>
                 </div>
 
