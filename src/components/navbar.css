@@ -10,11 +10,10 @@
     gap: 20px;
 }
 
-.icon__item {
+.icon__item {  
     display: flex;
     list-style: none;
-    
-    gap: 10px;
+    gap: 20px;
 }
 .icon__item a {
     cursor: pointer;
@@ -24,4 +23,10 @@
     color: var(--first-color);
     transition: all .3s ease;
 }
+
+
+
+
+
+
 

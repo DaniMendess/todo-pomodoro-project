@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import './todo.css'
 import { RiAddCircleLine, RiCloseFill } from "react-icons/ri";
@@ -8,10 +8,18 @@ import { BsPencil, BsCheck2, BsTrash } from "react-icons/bs";
 import Footer from "../../components/Footer"
 import NavBar from "../../components/Navbar"
 
+const getLocalItems = () => {
+    let tasks = localStorage.getItem('my_tasks');
 
+    if(tasks){
+        return JSON.parse(localStorage.getItem('my_tasks'))
+    }else {
+        return [];
+    }
+}
 
 const Todo = () => {
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(getLocalItems());
     const [modal, setModal] = useState('modal-wraper');
     const [filter, setFilter] = useState("todas");
     const taskName = useRef();
@@ -33,7 +41,7 @@ const Todo = () => {
             return
         }
 
-        const newTask = { id: uuidv4(), text: taskName.current.value, isComplete: false, itsDone: false}
+        const newTask = { id: uuidv4(), text: taskName.current.value, isComplete: false, itsDone: false }
         setTasks([...tasks, newTask])
     }
 
@@ -80,42 +88,57 @@ const Todo = () => {
 
     const changeTask = (event) => {
         setFilter(event.target.value);
-      };
-      
-      const filterTasks = (task) => {
-        if (filter === "todas") {
-          return true; // Mostra todas as tarefas
-        } else if (filter === "feitas") {
-          return task.isComplete; // Mostra apenas as tarefas feitas
-        } else if (filter === "a fazer") {
-          return !task.isComplete; // Mostra apenas as tarefas a fazer (não concluídas)
-        }
-      };
-    
+    };
 
+    const filterTasks = (task) => {
+        if (filter === "todas") {
+            return true; // Mostra todas as tarefas
+        } else if (filter === "feitas") {
+            return task.isComplete; // Mostra apenas as tarefas feitas
+        } else if (filter === "a fazer") {
+            return !task.isComplete; // Mostra apenas as tarefas a fazer (não concluídas)
+        }
+    };
+
+
+    // Carregas Lista de tarefas no LocalStorage
+    useEffect(() => {
+        if (localStorage.getItem('my_tasks') !== null) {
+            setTasks(JSON.parse(localStorage.getItem('my_tasks')))
+        }
+    }, [])
+
+    // Persistencia do state 
+    // atualizar a lista de contatos no localStorage
+    useEffect(() => {
+        localStorage.setItem('my_tasks', JSON.stringify(tasks))
+
+    }, [tasks])
 
     return (
         <div className="container">
-            <NavBar/>
-            
+            <NavBar />
+
             <div className="all__items">
-            <div className="add__task">
+                <div className="add__task">
                     <input ref={taskName} className="task__item" type="text" placeholder="Adicione as suas tarefas..." onChange={handleItem} />
                     <button className="btn__add__task" onClick={addTask}>
-                        <RiAddCircleLine size={25}/>
+                        <RiAddCircleLine size={25} />
                     </button>
-            </div>
+                </div>
                 <main className="is__main">
                     {tasks.length > 0 && (
                         <div className="nav__search">
                             <div className="search__list">
                                 <form className="search__list__item">
+                                    
                                     <select defaultValue={'DEFAULT'} className="select__item__search" onChange={changeTask}>
                                         <option value="DEFAULT" disabled>Filtrar</option>
                                         <option value="todas">Todas</option>
                                         <option value="feitas">Feitas</option>
                                         <option value="a fazer">A fazer</option>
                                     </select>
+                                    
                                 </form>
                             </div>
                         </div>
@@ -126,16 +149,16 @@ const Todo = () => {
                             <>
                                 <div className="tasks">
                                     {tasks.filter(filterTasks).map((task) => (
-                                            <div className={task.isComplete ? 'task-container completed' : 'task-container'}  key={task.id}
-                                            >
-                                                <p style={{ fontSize: 14 }} className="task__name">{task.text}</p>
-                                                <div className="option__items">
-                                                    <span><BsPencil onClick={() => theModal(task.id)} /></span>
-                                                    <span><BsCheck2 onClick={() => toggleTaskComplete(task.id)} /></span>
-                                                    <span><BsTrash onClick={() => deleteTask(task.id)} /></span>
-                                                </div>
+                                        <div className={task.isComplete ? 'task-container completed' : 'task-container'} key={task.id}
+                                        >
+                                            <p style={{ fontSize: 14 }} className="task__name">{task.text}</p>
+                                            <div className="option__items">
+                                                <span><BsPencil onClick={() => theModal(task.id)} /></span>
+                                                <span><BsCheck2 onClick={() => toggleTaskComplete(task.id)} /></span>
+                                                <span><BsTrash onClick={() => deleteTask(task.id)} /></span>
                                             </div>
-                                
+                                        </div>
+
 
                                     ))
                                     }
@@ -174,7 +197,7 @@ const Todo = () => {
                     </div>
                 </div>
             ))}
-           
+
 
             <Footer />
         </div>

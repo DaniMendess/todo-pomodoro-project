@@ -86,7 +86,7 @@
 }
 
 .select__item__search {
-    background-color: var(--input-color);
+    background:var(--input-color) url("../../assets/Vector.svg") 95.5% 50% no-repeat;
     border: none;
     padding: 14px 0 14px 0;
     border-radius: 10px;
@@ -98,8 +98,6 @@
     padding: 10px;
     appearance: none;
     cursor: pointer;
-    appearance: none;
-
 }
 
 .select__item__search:hover {
